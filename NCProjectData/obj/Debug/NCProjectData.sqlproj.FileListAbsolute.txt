@@ -1,0 +1,10 @@
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\bin\Debug\NCProjectData.dacpac
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\bin\Debug\NCProjectData.dll
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\bin\Debug\NCProjectData.pdb
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\NCProjectData.sqlproj.AssemblyReference.cache
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\Model.xml
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\refactor.xml
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\postdeploy.sql
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\predeploy.sql
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\NCProjectData.dll
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectData\obj\Debug\NCProjectData.pdb

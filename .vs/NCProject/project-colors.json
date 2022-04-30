@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e148050e-f5f3-4c29-8407-905c14058bc8": {
+      "ProjectGuid": "e148050e-f5f3-4c29-8407-905c14058bc8",
+      "DisplayName": "NCProject",
+      "ColorIndex": 0
+    },
+    "f8505c8a-d569-4dea-bd10-5d549b274f64": {
+      "ProjectGuid": "f8505c8a-d569-4dea-bd10-5d549b274f64",
+      "DisplayName": "NCProjectApplication",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
