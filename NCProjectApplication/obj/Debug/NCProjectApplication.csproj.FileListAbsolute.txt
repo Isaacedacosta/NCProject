@@ -1,0 +1,9 @@
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\bin\Debug\NCProjectApplication.dll
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\bin\Debug\NCProjectApplication.pdb
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\obj\Debug\NCProjectApplication.csproj.AssemblyReference.cache
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\obj\Debug\NCProjectApplication.csproj.CoreCompileInputs.cache
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\obj\Debug\NCProjectApplication.dll
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\obj\Debug\NCProjectApplication.pdb
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Isaac\source\repos\projetos\NCProject\NCProjectApplication\obj\Debug\NCProjectApplication.csproj.CopyComplete

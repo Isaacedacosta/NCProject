@@ -1,0 +1,33 @@
+﻿@using System.Data
+@{
+    DataTable locations = ViewBag.Locations;
+}
+
+
+<div>
+    <h1>Locations</h1>
+    <div>
+        <a href="/Locations/Create" class="btn btn-primary">Nova Localização</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Localizacao</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(DataRow row in locations.Rows)
+            {
+                <tr>
+                    <td>@row["Nome"]</td>
+                    <td>@row["Localizacao"]</td>
+                    <td>@row["Cidade"]</td>
+                    <td>@row["Estado"]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

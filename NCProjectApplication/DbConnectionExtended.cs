@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NCProjectApplication
 {
-    class DbConnectionExtended
+    public class DbConnectionExtended
     {
-        public string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog = NCProject; Integrated Security = True";
+        public string connString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog = NCProject; Integrated Security = True";
 
 
     }

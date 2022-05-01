@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <div>
+    <h1> Crie uma nova localização</h1>
+    <form method="post" action="/Locations/CreateLocation">
+            <div class="mb-3">
+                <label for="Nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="Nome" name="Nome" aria-describedby="nomeHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Descricao" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="Descricao" name="Descricao" aria-describedby="descricaoHelp">
+            </div>
+            <div class="mb-3">
+                <label for="Localizacao" class="form-label">Endereço/Localização</label>
+                <input type="text" class="form-control" id="Localizacao" name="Localizacao" aria-describedby="localizacaoHelp">
+            </div>
+            <div class="row mb-3">
+               <div class="col-9">
+                    <label for="Cidade" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="Cidade" name="Cidade" aria-describedby="cidadeHelp">
+                </div>
+
+                  <div class="col-3">
+                    <label for="Estado" class="form-label">Estado</label>
+                    <input type="text" class="form-control" id="Estado" name="Estado" aria-describedby="estadoHelp">
+                </div>            
+            </div>           
+
+            <button type="submit" class="btn btn-success">Criar</button>
+		    <a href="/Locations" class="btn btn-warning">Voltar</a>
+
+        </form>
+    </div>
+
+}
