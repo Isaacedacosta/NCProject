@@ -1,0 +1,56 @@
+﻿@using System.Data
+@{
+    DataTable location = ViewBag.Location;
+    string[] estados = ViewBag.Estados;
+}
+
+<div>
+    <h1> Localização Selecionada</h1>
+    <form method="post" action="/Locations/UpdateLocation/@location.Rows[0]["Id"]">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" maxlength="40" class="form-control" id="Nome" name="Nome" aria-describedby="nomeHelp" value="@location.Rows[0]["Nome"].ToString().Trim()" required>
+        </div>
+        <div class="mb-3">
+            <label for="Descricao" class="form-label">Descrição</label>
+            <input type="text" maxlength="100" class="form-control" id="Descricao" name="Descricao" aria-describedby="descricaoHelp" value="@location.Rows[0]["Descricao"].ToString().Trim()" required>
+        </div>
+        <div class="row mb-3">
+        <div class="col-9">
+            <label for="Localizacao" class="form-label">Endereço/Localização</label>
+            <input type="text" maxlength="40" class="form-control" id="Localizacao" name="Localizacao" aria-describedby="localizacaoHelp" value="@location.Rows[0]["Localizacao"].ToString().Trim()" required>
+        </div>
+        <div class="col-3">
+            <label for="Data" class="form-label">Data da Criação</label>
+            <input type="text" class="form-control" id="Data" name="Data" aria-describedby="dataCriacaoHelp" value="@location.Rows[0]["Data"]" disabled>
+        </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-9">
+                <label for="Cidade" class="form-label">Cidade</label>
+                <input type="text" maxlength="30" class="form-control" id="Cidade" name="Cidade" aria-describedby="cidadeHelp" value="@location.Rows[0]["Cidade"].ToString().Trim()" required>
+            </div>
+
+            <div class="col-3">
+                <label for="Estado" class="form-label">Estado</label>
+                <select class="form-control" id="Estado" name="Estado" aria-label="Estados" required>
+                    <option selected>@location.Rows[0]["Estado"]</option>
+                    @foreach(string estado in estados)
+                    {
+                        <option value="@estado">@estado</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <a href="/Locations" class="btn btn-primary">Voltar</a>
+            </div>
+            <div class="col-1">
+                <button type="submit" class="btn btn-warning">Confirmar</button>
+            </div>
+        </div>
+        
+
+    </form>
+</div>

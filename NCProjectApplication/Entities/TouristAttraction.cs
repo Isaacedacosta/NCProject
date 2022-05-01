@@ -17,7 +17,8 @@ namespace NCProjectApplication.Entities
         public string Descricao { get; set; }
         public string Localizacao { get; set; }
         public string Cidade { get; set; }
-        public string Estado { get; set; } 
+        public string Estado { get; set; }
+        public DateTime DataCriacao { get; set; } = DateTime.Now;
 
         #endregion
     }
