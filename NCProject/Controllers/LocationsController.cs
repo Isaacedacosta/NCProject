@@ -5,12 +5,29 @@ namespace NCProject.Controllers
 {
     public class LocationsController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             ViewBag.Locations = WebServices.AllAttractions();
             return View();
         }
 
+        //[HttpGet]
+        //public IActionResult Search(int PageIndex)
+        //{
+        //    ViewBag.Index = PageIndex;
+        //    ViewBag.Locations = WebServices.filter(PageIndex);
+        //    return View();
+        //}
+        [HttpGet]
+        public IActionResult Search(int Id)
+        {
+            ViewBag.Filtro = WebServices.Filter(Id);
+            ViewBag.Estados = WebServices.EstadosDisponiveis;
+            ViewBag.NumeroPaginas = WebServices.NumberOfPages();
+            ViewBag.PaginaAtual = Id;
+            return View();
+        }
         [HttpGet]
         public IActionResult Read(int Id)
         {

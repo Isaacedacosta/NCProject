@@ -11,11 +11,43 @@ namespace NCProjectApplication.Services
 {
     public static class WebServices
     {
+        public static int NumberOfPages()
+        {
+            DataTable dt = AllAttractions();
+            int numberOfPages = (dt.Rows.Count / 4);
+            if (dt.Rows.Count % 4 > 0) { numberOfPages++; }
+            return numberOfPages;
+        }
+        public static DataTable Filter(int requestIndex)
+        {
+            DataTable dt = AllAttractions();
+            int numberOfPages = (dt.Rows.Count / 4);
+            if (dt.Rows.Count % 4 > 0) { numberOfPages++; }
+
+            int maxRowIndex = (requestIndex * 4);
+            if (maxRowIndex <= dt.Rows.Count)
+            {
+                do
+                {
+                    dt.Rows.RemoveAt(maxRowIndex);
+                } while (maxRowIndex < dt.Rows.Count);
+            }
+
+            int minRowIndex = (requestIndex * 4) - 4;
+            for(int rowsToremove = minRowIndex; rowsToremove > 0; rowsToremove--)
+            {
+                dt.Rows.RemoveAt(0);
+            }
+            return dt;
+        }
         public static DataTable AllAttractions()
         {
             DbServices dbServices = new DbServices();
             DataTable dataTable = dbServices.ReadAll();
             dataTable.Columns.Add("DescricaoDisplay");
+            dataTable.Columns.Add("nomeDisplay");
+            dataTable.Columns.Add("localizacaoDisplay");
+            dataTable.Columns.Add("cidadeDisplay");
             foreach(DataRow dr in dataTable.Rows)
             {
                 string descricaoDisplay = "";

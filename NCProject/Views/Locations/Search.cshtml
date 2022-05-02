@@ -1,6 +1,8 @@
 ﻿@using System.Data
 @{
-    DataTable locations = ViewBag.Locations;
+    DataTable locations = ViewBag.Filtro;
+    int numberOfPages = ViewBag.NumeroPaginas;
+    int pageindex = ViewBag.PaginaAtual;
 }
 
 <div>
@@ -31,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(DataRow row in locations.Rows)
+           @foreach(DataRow row in locations.Rows)
             {
                 <tr>
                     @if(row["Nome"].ToString().Length > 29)
@@ -65,4 +67,19 @@
             }
         </tbody>
     </table>
+
+    @if(numberOfPages > 0)
+    {
+        <div class="col-sm-12">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    @for(int i = 1; i < numberOfPages + 1; i++)
+                    {
+                       
+                        <li class="page-item"> <a href="/Locations/Search/@(i)" class="page-link">@i</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
 </div>
