@@ -7,19 +7,39 @@
 
 <div>
     <h2 class="mb-3">PONTOS TURISTICOS</h2>
-    
+    <form method="post" action="/Locations/SearchLocations">
     <div class="row g-3 align-items-center mb-4">
         <div class="col-1">
-            <a href="/Locations/Create" class="btn btn-primary">Buscar</a>
+            <button type="submit"  class="btn btn-primary">Buscar</button>
         </div>
         <div class="col-6">
-            <input type="text" id="inputSearch" name="inputSearch" class="form-control" aria-describedby="inputSearch">
+            <input type="text" maxlength="40" class="form-control" id="inputSearch" name="inputSearch" aria-describedby="inputSearch" required>
         </div>
         <div class="col-3"></div>
         <div class="col-2">
                 <a href="/Locations/Create" class="btn btn-primary">Nova Localização</a>
         </div>
     </div>
+    <div class="d-none">
+            <label for="indexPageHolder" class="form-label">indexPageHolder</label>
+            <input type="text" class="form-control" id="indexPageHolder" name="indexPageHolder" value="1" required>
+    </div>
+    </form>
+
+    @if(numberOfPages > 0)
+    {
+        <div class="col-sm-12">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    @for(int i = 1; i < numberOfPages + 1; i++)
+                    {
+                       
+                        <li class="page-item"> <a href="/Locations/Sort/@(i)" class="page-link">@i</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
 
     <table class="table">
         <thead>
@@ -67,19 +87,4 @@
             }
         </tbody>
     </table>
-
-    @if(numberOfPages > 0)
-    {
-        <div class="col-sm-12">
-            <nav>
-                <ul class="pagination justify-content-center">
-                    @for(int i = 1; i < numberOfPages + 1; i++)
-                    {
-                       
-                        <li class="page-item"> <a href="/Locations/Sort/@(i)" class="page-link">@i</a></li>
-                    }
-                </ul>
-            </nav>
-        </div>
-    }
 </div>

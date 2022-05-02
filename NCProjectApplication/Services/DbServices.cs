@@ -26,6 +26,7 @@ namespace NCProjectApplication.Services
                     command.CommandText = commandString;
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
                 return true;
             }
@@ -34,11 +35,12 @@ namespace NCProjectApplication.Services
                 string errorMessage = exception.Message;
                 return false;
             }
-        } 
+        }
         #endregion
 
         public DataTable ReadAll()
         {
+            DataTable table = new DataTable();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -47,15 +49,15 @@ namespace NCProjectApplication.Services
                     SqlCommand command = connection.CreateCommand();
                     command.CommandText = commandString;
                     connection.Open();
-                    
+
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     adapter.SelectCommand = command;
+                    
+                    adapter.Fill(table);
 
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);    
-
-                    return table;
+                    connection.Close();
                 }
+                return table;
             }
             catch (Exception exception)
             {
@@ -66,6 +68,7 @@ namespace NCProjectApplication.Services
 
         public DataTable ReadById(int Id)
         {
+            DataTable table = new DataTable();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -78,11 +81,11 @@ namespace NCProjectApplication.Services
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     adapter.SelectCommand = command;
 
-                    DataTable table = new DataTable();
+                    
                     adapter.Fill(table);
-
-                    return table;
+                    connection.Close();
                 }
+                return table;
             }
             catch (Exception exception)
             {
@@ -102,6 +105,7 @@ namespace NCProjectApplication.Services
                     command.CommandText = commandString;
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
                 return true;
             }
@@ -123,6 +127,7 @@ namespace NCProjectApplication.Services
                     command.CommandText = commandString;
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
                 return true;
             }
@@ -132,5 +137,38 @@ namespace NCProjectApplication.Services
                 return false;
             }
         }
+
+
+        public DataTable ReadBySearch(string filter)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string commandString = $"SELECT * FROM Locations WHERE Nome LIKE '%{filter}%' UNION SELECT* FROM Locations WHERE Descricao LIKE '%{filter}%' UNION SELECT* FROM Locations WHERE Localizacao LIKE '%{filter}%' UNION SELECT* FROM Locations WHERE Cidade LIKE '%{filter}%' UNION SELECT* FROM Locations WHERE Estado LIKE '%{filter}%' ORDER BY Id;";
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = commandString;
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = command;
+
+                    
+                    adapter.Fill(table);
+                    connection.Close();
+                }
+                    return table;
+                
+            }
+            catch (Exception exception)
+            {
+                string errorMessage = exception.Message;
+                return null;
+            }
+        }
+
+
+
     }
 }

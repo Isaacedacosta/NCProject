@@ -2,24 +2,36 @@
 @{
     DataTable locations = ViewBag.Filtro;
     int numberOfPages = ViewBag.NumeroPaginas;
-    int pageindex = ViewBag.PaginaAtual;
+    int pageIndex = ViewBag.PaginaAtual;
+    string searchedQuery = ViewBag.QuerySearched;
+    string proximaPagina = ViewBag.ProximaPagina;
+    string paginaAnterior = ViewBag.PaginaAnterior;
+
+
 }
 
 <div>
     <h2 class="mb-3">PONTOS TURISTICOS</h2>
     
+    <form method="post" action="/Locations/SearchLocations" name="PostSearch">
     <div class="row g-3 align-items-center mb-4">
         <div class="col-1">
-            <a href="/Locations/Create" class="btn btn-primary">Buscar</a>
+            <button type="submit"  class="btn btn-primary">Buscar</button>
         </div>
         <div class="col-6">
-            <input type="text" id="inputSearch" name="inputSearch" class="form-control" aria-describedby="inputSearch">
+            <input type="text" maxlength="40" class="form-control" id="inputSearch" name="inputSearch" aria-describedby="inputSearch" value="@ViewBag.QuerySearched" required>
         </div>
         <div class="col-3"></div>
         <div class="col-2">
                 <a href="/Locations/Create" class="btn btn-primary">Nova Localização</a>
         </div>
     </div>
+    <div class="d-none">
+            <label for="indexPageHolder" class="form-label">indexPageHolder</label>
+            <input type="text" class="form-control" id="indexPageHolder" name="indexPageHolder" value="1" required>
+    </div>
+    
+    </form>
 
     <table class="table">
         <thead>
@@ -61,7 +73,6 @@
                         }
 
                     <td>@row["Estado"]</td>
-                    <td>@row["DescricaoDisplay"]</td>
                     <td><a href="/Locations/Read/@row["Id"]" class="btn btn-light">Detalhes</a></td>
                 </tr>
             }
@@ -73,13 +84,17 @@
         <div class="col-sm-12">
             <nav>
                 <ul class="pagination justify-content-center">
-                    @for(int i = 1; i < numberOfPages + 1; i++)
-                    {
-                       
-                        <li class="page-item"> <a href="/Locations/Search/@(i)" class="page-link">@i</a></li>
-                    }
+                    <li class="page-item"> <a href="/Locations/Search/@paginaAnterior" id="Previous" name="Previous" class="mx-3">Anterior</a></li>
+                    <li class="page-item"> <a href="/Locations/Search/@proximaPagina" id="Next" name="Next" class="mx-3">Proxima</a></li>
+
+                   
+                    
                 </ul>
             </nav>
+        </div>
+        <div class="d-none">
+            <label for="inputSearch" class="form-label">inputSearch</label>
+            <input type="text" class="form-control" id="inputSearch" name="inputSearch" value="@ViewBag.QuerySearched" required>
         </div>
     }
 </div>
