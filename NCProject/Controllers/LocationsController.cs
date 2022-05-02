@@ -11,14 +11,27 @@ namespace NCProject.Controllers
             ViewBag.Locations = WebServices.AllAttractions();
             return View();
         }
+        [HttpGet]
+        public IActionResult Sort(int? Id)
+        {
+            int _id;
+            if(Id == null)
+            {
+                _id = 0;
+            }
+            else
+            {
+                _id = Id.Value;
+                
+            }
+            ViewBag.Filtro = WebServices.Filter(_id);
+            ViewBag.Estados = WebServices.EstadosDisponiveis;
+            ViewBag.NumeroPaginas = WebServices.NumberOfPages();
+            ViewBag.PaginaAtual = Id;
+            return View();
+        }
 
-        //[HttpGet]
-        //public IActionResult Search(int PageIndex)
-        //{
-        //    ViewBag.Index = PageIndex;
-        //    ViewBag.Locations = WebServices.filter(PageIndex);
-        //    return View();
-        //}
+
         [HttpGet]
         public IActionResult Search(int Id)
         {
