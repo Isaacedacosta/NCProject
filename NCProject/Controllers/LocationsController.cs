@@ -25,6 +25,10 @@ namespace NCProject.Controllers
         public IActionResult Sort(int? Id)
         {
             var Table = WebServices.AllAttractions();
+            if (Table.Rows.Count < 1)
+            {
+                return Redirect("/Locations");
+            }
             int numberOfPages = WebServices.NumberOfPages(Table);
             int _id;
             if (Id == null)
@@ -41,6 +45,7 @@ namespace NCProject.Controllers
             {
                 return NotFound();
             }
+            
             ViewBag.Filtro = WebServices.GetAllPaginated(_id);
             ViewBag.Estados = WebServices.EstadosDisponiveis;
             ViewBag.NumeroPaginas = numberOfPages;
