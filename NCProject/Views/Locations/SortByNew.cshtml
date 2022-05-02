@@ -1,0 +1,70 @@
+﻿@using System.Data
+@{
+    DataTable locations = ViewBag.Locations;
+}
+
+<div>
+    <h2 class="mb-3">PONTOS TURISTICOS (do mais novo ao mais antigo)</h2>
+
+    <div class="col-sm-12 mt-4">
+            <nav>
+                <ul class="pagination justify-content-end">
+                    <li class="page-item"> <a href="/Locations/SortByNew" id="Previous" name="Previous" class="mx-3 btn-primary btn">Mais Recentes</a></li>
+                    <li class="page-item"> <a href="/Locations/SortByOld" id="Next" name="Next" class="mx-3 btn-primary btn">Mais Antigos </a></li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class="row g-3 align-items-center mb-4">
+        <div class="col-7">
+                <a href="/Locations/Sort/1" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Localização</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Criacao</th>
+                <th scope="col">     </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(DataRow row in locations.Rows)
+            {
+                <tr>
+                    @if(row["Nome"].ToString().Length > 29)
+                    {
+                        <td>@row["Nome"].ToString().Remove(30)</td>
+                    }else
+                    {
+                        <td>@row["Nome"]</td>    
+                    }
+
+                    @if(row["Localizacao"].ToString().Length > 29)
+                    {
+                        <td>@row["Localizacao"].ToString().Remove(30)</td>
+                    }else
+                    {
+                        <td>@row["Localizacao"]</td>    
+                    }
+
+                    @if (row["Cidade"].ToString().Length > 27)
+                        {
+                            <td>@row["Cidade"].ToString().Remove(28)</td>
+                        }else
+                        {
+                            <td>@row["Cidade"]</td>
+                        }
+
+                    <td>@row["Estado"]</td>
+                    <td>@row["Data"]</td>
+                    <td><a href="/Locations/Read/@row["Id"]" class="btn btn-light">Detalhes</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

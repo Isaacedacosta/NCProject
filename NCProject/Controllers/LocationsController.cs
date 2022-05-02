@@ -78,22 +78,19 @@ namespace NCProject.Controllers
             return Redirect($"/Locations/Search/{searchQuery}-atIndex{indexSelected}");
         }
 
-        [HttpPost]
-        public IActionResult SearchLocationsWithIndex(int pageNumber)
+        [HttpGet]
+        public IActionResult SortByNew()
         {
-            int testestesss = pageNumber;
-            string searchQuery = Request.Form["inputSearch"];
-            string indexBuscaString = Request.Form["indexSelected"];
-            string indexPaginaSelected = Request.Form["indexPageHolder"];
-            int.TryParse(indexPaginaSelected, out int indexBusca);
-            
-            
-
-            return Redirect($"/Locations/Search/{searchQuery}");
+            ViewBag.Locations = WebServices.OrderByNew();
+            return View();
         }
 
+        public IActionResult SortByOld()
+        {
+            ViewBag.Locations = WebServices.OrderByOld();
+            return View();
+        }
 
-        
 
         #region Update
         [HttpGet]

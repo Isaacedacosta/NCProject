@@ -168,6 +168,63 @@ namespace NCProjectApplication.Services
             }
         }
 
+        public DataTable OrderByNew()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string commandString = "SELECT * FROM Locations ORDER BY Data DESC;";
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = commandString;
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = command;
+
+
+                    adapter.Fill(table);
+                    connection.Close();
+                }
+                return table;
+
+            }
+            catch (Exception exception)
+            {
+                string errorMessage = exception.Message;
+                return null;
+            }
+        }
+
+        public DataTable OrderByOld()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string commandString = "SELECT * FROM Locations ORDER BY Data ASC;";
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = commandString;
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = command;
+
+
+                    adapter.Fill(table);
+                    connection.Close();
+                }
+                return table;
+
+            }
+            catch (Exception exception)
+            {
+                string errorMessage = exception.Message;
+                return null;
+            }
+        }
 
 
     }

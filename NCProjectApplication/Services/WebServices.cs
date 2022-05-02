@@ -194,6 +194,39 @@ namespace NCProjectApplication.Services
 
             return CarrosselButons;
         }
-        
+
+        public static DataTable OrderByOld()
+        {
+            DbServices dbServices = new DbServices();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = dbServices.OrderByOld();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return dataTable;
+        }
+
+        public static DataTable OrderByNew()
+        {
+            DbServices dbServices = new DbServices();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = dbServices.OrderByNew();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return dataTable;
+        }
+
+
     }
 }
